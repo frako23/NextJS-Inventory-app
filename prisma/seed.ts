@@ -10,7 +10,7 @@ async function main() {
       name: `Product ${i + 1}`,
       price: (Math.random() * 90 + 10).toFixed(2),
       quantity: Math.floor(Math.random() * 20),
-      lowStackAt: 5,
+      lowStockAt: 5,
       createdAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * (i - 5)),
     })),
   });
