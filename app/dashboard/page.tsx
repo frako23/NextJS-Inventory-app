@@ -37,6 +37,12 @@ export default async function DashboardPage() {
       2,
       "0"
     )}/${String(weekStart.getDate() + 1).padStart(2, "0")}`;
+
+    const weekProducts = allProducts.filter((product) => {
+      const productDate = new Date(product.createdAt);
+      return productDate >= weekStart && productDate <= weekEnd;
+    });
+    weeklyProductsData.push({ week: weekLabel, products: weekProducts.length });
   }
   const recent = await prisma.product.findMany({
     where: { userId },
@@ -111,7 +117,7 @@ export default async function DashboardPage() {
               <h2>New products per week</h2>
             </div>
             <div className="h-48">
-              <ProductsChart data={[{ week: "07", products: 5 }]} />
+              <ProductsChart data={weeklyProductsData} />
             </div>
           </div>
         </div>
