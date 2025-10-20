@@ -23,6 +23,23 @@ export default async function DashboardPage() {
     return sum + Number(product.price) * Number(product.quantity);
   }, 0);
 
+  const inStockCount = allProducts.filter(
+    (product) => Number(product.quantity) > 5
+  ).length;
+  const lowStockCount = allProducts.filter(
+    (product) => Number(product.quantity) <= 5 && Number(product.quantity) >= 1
+  ).length;
+  const outOfStockCount = allProducts.filter(
+    (product) => Number(product.quantity) === 0
+  ).length;
+
+  const inStockPercentage =
+    totalProducts > 0 ? Math.round((inStockCount / totalProducts) * 100) : 0;
+  const lowStockPercentage =
+    totalProducts > 0 ? Math.round((lowStockCount / totalProducts) * 100) : 0;
+  const outOfStockPercentage =
+    totalProducts > 0 ? Math.round((outOfStockCount / totalProducts) * 100) : 0;
+
   const now = new Date();
   const weeklyProductsData = [];
 
@@ -167,6 +184,17 @@ export default async function DashboardPage() {
                   </div>
                 );
               })}
+            </div>
+          </div>
+
+          <div className="bg-white rounded-lg border border-gray-200 p-6">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-lg font-semibold text-gray-900">
+                Efficiency
+              </h2>
+            </div>
+            <div className="flex items-center justify-center">
+              <div className="relative w-48 h-48"></div>
             </div>
           </div>
         </div>

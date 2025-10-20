@@ -1,6 +1,14 @@
 "use client";
 
-import { AreaChart, CartesianGrid, ResponsiveContainer } from "recharts";
+import {
+  Area,
+  AreaChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
 
 interface ChartData {
   week: string;
@@ -19,6 +27,41 @@ export default function ProductsChart({ data }: { data: ChartData[] }) {
           dataKey="products"
         >
           <CartesianGrid strokeDasharray="3 3" stroke="f0f0f0" />
+          <XAxis
+            dataKey="week"
+            stroke="#666"
+            fontSize={12}
+            tickLine={false}
+            axisLine={false}
+          />
+          <YAxis
+            stroke="#666"
+            fontSize={12}
+            tickLine={false}
+            axisLine={false}
+            allowDecimals={false}
+          />
+
+          <Area
+            type="monotone"
+            dataKey="products"
+            stroke="#8b5cf6"
+            fill="#8b5cf6"
+            fillOpacity={0.2}
+            strokeWidth={2}
+            dot={{ fill: "#8b5cf6", r: 2 }}
+            activeDot={{ fill: "#8b5cf6", r: 4 }}
+          />
+
+          <Tooltip
+            contentStyle={{
+              backgroundColor: "white",
+              border: "1px solid #e5e7eb",
+              borderRadius: "8px",
+              boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+            }}
+            labelStyle={{ color: "#374151", fontWeight: "500" }}
+          />
         </AreaChart>
       </ResponsiveContainer>
     </div>
