@@ -1,6 +1,5 @@
 "use server";
 
-import { th } from "zod/locales";
 import { getCurrentUser } from "../auth";
 import { prisma } from "../prisma";
 import { z } from "zod";
