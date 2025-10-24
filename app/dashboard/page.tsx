@@ -195,9 +195,9 @@ export default async function DashboardPage() {
             </div>
             <div className="flex items-center justify-center">
               <div className="relative w-48 h-48">
-                <div className="absolute inset-0 rounded-full border-8 border-gray-200"></div>
+                <div className="absolute inset-0 rounded-full border-8 border-yellow-600"></div>
                 <div
-                  className="absolute inset-0 rounded-full border-8 border-purple-600"
+                  className="absolute inset-0 rounded-full border-8 border-green-600"
                   style={{
                     clipPath:
                       "polygon(50% 50%, 50% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 50%)",
