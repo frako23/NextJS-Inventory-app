@@ -1,4 +1,5 @@
 import Sidebar from "@/components/sidebar";
+import { addProduct } from "@/lib/actions/products";
 import { getCurrentUser } from "@/lib/auth";
 import Link from "next/link";
 
@@ -24,7 +25,7 @@ export default async function AddProductPage() {
 
         <div className="max-w-2xl">
           <div className="bg-white border border-gray-200 p-6">
-            <form action="" className="space-y-6">
+            <form action={addProduct} className="space-y-6">
               <div>
                 <label
                   htmlFor="name"
@@ -92,7 +93,6 @@ export default async function AddProductPage() {
                   type="text"
                   id="sku"
                   name="sku"
-                  required
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-transparent"
                   placeholder="Enter SKU"
                 />
@@ -103,13 +103,12 @@ export default async function AddProductPage() {
                   htmlFor="lowStockAt"
                   className="block text-sm font-medium text-gray-700 mb-2"
                 >
-                  Quantity *
+                  Low Stock At (optional)
                 </label>
                 <input
                   type="number"
                   id="lowStockAt"
                   name="lowStockAt"
-                  required
                   min="0"
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-transparent"
                   placeholder="Enter low stock threshold"
